@@ -22,3 +22,10 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### MS Code ###
+.classpath
+.project
+
+### Mac ###
+.DS_Store
