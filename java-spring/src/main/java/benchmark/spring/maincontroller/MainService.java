@@ -20,7 +20,7 @@ public class MainService {
 
     public DummyEntity fetchById(String id) {
         logger.info("Fetching entity " + id);
-        DummyEntity found = (DummyEntity) ofy().load().key(Key.create(id)).now();
+        DummyEntity found = (DummyEntity) ofy().cache(false).load().key(Key.create(id)).now();
 
         if (found == null) {
             logger.info("Entity not found");
