@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package com.example.appengine.demos.springboot;
+package benchmark.spring.health;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringBootExampleApplicationTests {
-
-  @Test
-  public void contextLoads() {
+@RestController
+public class HelloworldController {
+  @GetMapping("/")
+  public String hello() {
+    return "Java Spring service";
   }
-
 }
