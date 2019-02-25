@@ -34,7 +34,8 @@ func requestKeysOneByOne(chanId int, keys []string, ch chan<- string) {
 	successCount := 0
 
 	for idx, key := range keys {
-		resp, err := http.Get(fmt.Sprintf("https://java-spring-dot-runtimes-benchmark.appspot.com/entity/%s", key))
+		// resp, err := http.Get(fmt.Sprintf("https://java-spring-dot-runtimes-benchmark.appspot.com/entity/%s", key))
+		resp, err := http.Get(fmt.Sprintf("https://java-thundr-dot-runtimes-benchmark.appspot.com/entity/%s", key))
 		if idx%25 == 0 {
 			fmt.Printf("Channel %d has processed %d requests\n", chanId, idx)
 		}
