@@ -1,0 +1,37 @@
+type Avatar {
+  url: String
+}
+
+enum UserRole {
+  super
+  admin
+  user
+}
+
+type User {
+  id: ID!
+  name: String
+  avatar: Avatar!
+  email: String!
+  roles: [UserRole!]!
+  profile: [Attachment!]
+}
+
+type Query {
+  users: [User!]!
+  userById(id: ID!): User
+}
+
+input AttachmentInput {
+  id: ID!
+  filename: String!
+}
+
+type Attachment {
+  id: ID!
+  filename: String!
+}
+
+type Mutation {
+  updateUser(id: ID!, name: String, roles: [UserRole!]!, profile: [AttachmentInput!]): User!
+}

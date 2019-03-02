@@ -1,0 +1,14 @@
+type DummyEntity {
+  id: String!
+  random1: String
+  random2: Int
+}
+
+type Query {
+  dummies: [DummyEntity!]!
+  getDummyById(id: String!): DummyEntity
+}
+
+type Mutation {
+  createDummy(id: String!): DummyEntity!
+}

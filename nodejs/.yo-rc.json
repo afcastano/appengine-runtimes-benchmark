@@ -1,0 +1,10 @@
+{
+  "@3wks/generator-gae-node-nestjs": {
+    "promptValues": {
+      "project": "node-generated",
+      "projectName": "Node Generated",
+      "adminEmail": "andres@go.com,au",
+      "appEngineRegion": "austraia-southeast1"
+    }
+  }
+}

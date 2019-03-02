@@ -1,0 +1,8 @@
+{
+  "bootstrap": true,
+  "projectId": "node-generated-development",
+  "apiEndpoint": "localhost:9000",
+  "host": "http://localhost:3000",
+  "systemSecret": "2TaKliD/99iD2WOYpgiJ2SelT/nmTQJduaJHdWw+lsPZ7HArH2raRMWXDNa9zPaDsClttUc/73ZL9ayW4qByRw==",
+  "cookieSecret": "C0DrbXB8tVRJL1y9MV+qttf645pDm2HO6rMpiXBlRZ/6aS19LNQwX+p0KP+AOocw8n4VzQpAlhYa6fPU7jR9+w=="
+}

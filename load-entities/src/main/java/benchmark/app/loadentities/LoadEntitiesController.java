@@ -25,7 +25,12 @@ public class LoadEntitiesController {
 
     @GetMapping
     public List<String> getKeys() {
-        return service.getLoadedKeys();
+        return service.getKeyStrings();
+    }
+
+    @GetMapping("/names")
+    public List<String> getNames() {
+        return service.getNames();
     }
     
 }

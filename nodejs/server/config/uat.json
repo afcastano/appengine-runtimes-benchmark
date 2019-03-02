@@ -1,0 +1,8 @@
+{
+  "projectId": "node-generated-uat",
+  "location": "austraia-southeast1",
+  "host": "https://node-generated-uat.appspot.com",
+  "bucket": "node-generated-uat.appspot.com",
+  "systemSecret": "ls8N6Cc4OsGNHJtrq/azKBnFQ9FSuG5ex/Me6OGNYNM7Z0cz1bhll6RpsXT94TRVMvoxs3TInFiGFIHZJWpEHA==",
+  "cookieSecret": "WXJA8+3Sdoi+XYBV5KHbtWWNPshpVD+cILB1L5fu1MxVB0T8rMMcF796Cgd1Ys/+BgsidvkR5K3/VpG0WpOlpA=="
+}

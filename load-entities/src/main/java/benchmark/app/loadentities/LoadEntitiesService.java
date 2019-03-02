@@ -27,9 +27,15 @@ public class LoadEntitiesService {
         ofy().save().entities(entities).now();
     }
 
-    public List<String> getLoadedKeys() {
+    public List<String> getKeyStrings() {
         QueryKeys<DummyEntity> keys = ofy().load().type(DummyEntity.class).keys();
 
         return StreamSupport.stream(keys.spliterator(),false).map(key -> key.toWebSafeString()).collect(Collectors.toList());
+    }
+
+    public List<String> getNames() {
+        QueryKeys<DummyEntity> keys = ofy().load().type(DummyEntity.class).keys();
+
+        return StreamSupport.stream(keys.spliterator(),false).map(key -> key.getName()).collect(Collectors.toList());
     }
 }

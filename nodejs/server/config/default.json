@@ -1,0 +1,33 @@
+{
+  "bootstrap": false,
+  "projectId": "node-generated-dev",
+  "host": "http://localhost:3000",
+  "location": "austraia-southeast1",
+  "gmailUser": "andres@go.com,au",
+  "bucket": "node-generated-dev.appspot.com",
+  "auth": {
+    "local": {
+      "enabled": true
+    },
+    "google": {
+      "enabled": false,
+      "clientId": "",
+      "secret": "",
+      "signUpEnabled": true,
+      "signUpDomains": [],
+      "signUpRoles": []
+    },
+    "saml": {
+      "enabled": false,
+      "identityProviderUrl": "",
+      "cert": ""
+    },
+    "auth0": {
+      "enabled": false,
+      "domain": "",
+      "clientId": "",
+      "secret": "",
+      "namespace": ""
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "projectId": "gae-runtimes-benchmark",
+  "location": "us-central",
+  "host": "https://nodejs-dot-gae-runtimes-benchmark.appspot.com",
+  "bucket": "node-generated-prod.appspot.com",
+  "systemSecret": "ZVzx/hr44PvD6QCgutJt1LFmccJtDDMpCX4Ijz5CFynCY16tV48vNMsjucwkmGTMBGy5vsJsLLxDQkcBGa5MvA==",
+  "cookieSecret": "bqU9uxVefxof5a2aCYcQiFJces0vMAr1wq1O4zpG6+fDHnjt+anIOpevlw3MQcxXukvWWSgrqow7gRqaPuI2WQ=="
+}
