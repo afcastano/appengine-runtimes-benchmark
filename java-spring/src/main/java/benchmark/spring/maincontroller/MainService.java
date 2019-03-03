@@ -1,10 +1,11 @@
 package benchmark.spring.maincontroller;
 
-import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -20,7 +21,7 @@ public class MainService {
 
     public DummyEntity fetchById(String id) {
         logger.info("Fetching entity " + id);
-        DummyEntity found = (DummyEntity) ofy().cache(false).load().key(Key.create(id)).now();
+        DummyEntity found = ofy().cache(false).load().type(DummyEntity.class).id(id).now();
 
         if (found == null) {
             logger.info("Entity not found");
@@ -29,6 +30,14 @@ public class MainService {
         }
 
         return found;
+    }
+
+    public List<DummyEntity> queryGreaterThanIndex(Integer random2) {
+        logger.info("Querying entities greater than " + random2);
+        List<DummyEntity> entities = ofy().cache(false).load().type(DummyEntity.class)
+                .filter("random2 >=", random2).list();
+
+        return entities;
     }
 
 

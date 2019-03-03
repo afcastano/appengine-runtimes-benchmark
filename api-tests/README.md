@@ -6,3 +6,9 @@ export GOPATH=$PWD
 export GOBIN=$GOPATH/bin
 PATH=$PATH:$GOPATH:$GOBIN
 export PATH=$PATH
+```
+
+Run
+```
+go build concurrent.go 
+```

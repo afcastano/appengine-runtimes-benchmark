@@ -12,12 +12,11 @@ export class DummiesResolver {
   @AllowAnonymous()
   async getDummies(
     _obj: {},
-    _args: {},
+    { index }: { index: number},
     context: Context,
   ): Promise<ReadonlyArray<DummyEntity>> {
-    const [users] = await this.repository.query(context);
-
-    return users;
+    const [entities] = await this.repository.query(context, {filters: {random2: {op: ">=", value: index}}});
+    return entities;
   }
 
   @Query('getDummyById')

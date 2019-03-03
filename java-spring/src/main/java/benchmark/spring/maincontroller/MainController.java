@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController()
 public class MainController {
     private static Log logger = LogFactory.getLog(MainController.class);
@@ -24,4 +26,14 @@ public class MainController {
         logger.info("Request to fetch entity " + id);
         return mainService.fetchById(id);
     }
+
+    @GetMapping("entities/{index}")
+    @ResponseBody
+    public List<DummyEntity> fetchEntities(@PathVariable("index") int index) {
+        logger.info("Request to query entity greater than " + index);
+        List<DummyEntity> foundEntities = mainService.queryGreaterThanIndex(index);
+        logger.info("Found " + foundEntities.size() + " entities");
+        return foundEntities;
+    }
+
 }

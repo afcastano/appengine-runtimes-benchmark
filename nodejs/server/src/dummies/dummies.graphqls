@@ -5,7 +5,7 @@ type DummyEntity {
 }
 
 type Query {
-  dummies: [DummyEntity!]!
+  dummies(index: Int): [DummyEntity!]!
   getDummyById(id: String!): DummyEntity
 }
 

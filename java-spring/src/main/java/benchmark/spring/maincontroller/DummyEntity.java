@@ -2,12 +2,15 @@ package benchmark.spring.maincontroller;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class DummyEntity {
     @Id
     private String id;
     private String random1;
+
+    @Index
     private Integer random2;
 
     public DummyEntity() {}

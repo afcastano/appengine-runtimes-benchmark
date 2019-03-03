@@ -46,6 +46,7 @@ public class ApplicationModule extends BaseModule {
 	private void addRoutes(Router router) {
 		router.get("/", FetchEntitiesController.class, "sayHello", Route.Health);
 		router.get("/entity/{id}", FetchEntitiesController.class, "fetchEntity");
+		router.get("/entity/greaterThan/{index}", FetchEntitiesController.class, "fetchEntities");
 	}
 
 	private void configureObjectify() {

@@ -4,6 +4,8 @@ import com.threewks.thundr.view.json.JsonView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.util.List;
+
 public class FetchEntitiesController {
 
     private static Log logger = LogFactory.getLog(FetchEntitiesController.class);
@@ -21,5 +23,12 @@ public class FetchEntitiesController {
     public JsonView fetchEntity(String id) {
         logger.info("Request to fetch entity " + id);
         return new JsonView(service.fetchById(id));
+    }
+
+    public JsonView fetchEntities(Integer index) {
+        logger.info("Request to query entity greater than " + index);
+        List<DummyEntity> foundEntities = service.queryGreaterThanIndex(index);
+        logger.info("Found " + foundEntities.size() + " entities");
+        return new JsonView(foundEntities);
     }
 }

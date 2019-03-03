@@ -3,7 +3,7 @@
     <module>java-thundr</module>
     <runtime>java8</runtime>
     <threadsafe>true</threadsafe>
-
+    <instance-class>F2</instance-class>
     <system-properties>
         <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
     </system-properties>
