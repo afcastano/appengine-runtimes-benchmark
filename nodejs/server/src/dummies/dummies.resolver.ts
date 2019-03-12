@@ -15,7 +15,7 @@ export class DummiesResolver {
     { index }: { index: number},
     context: Context,
   ): Promise<ReadonlyArray<DummyEntity>> {
-    const [entities] = await this.repository.query(context, {filters: {random2: {op: ">=", value: index}}});
+    const [entities] = await this.repository.query(context, {filters: {random2: [{op: ">=", value: index}, {op: "<", value: index + 10000}]}, limit: 10});
     return entities;
   }
 

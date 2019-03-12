@@ -36,7 +36,7 @@ func loadKeys(testType string) ([]string, error) {
 
 func loadEntityNames() ([]string, error) {
 	start := time.Now()
-	resp, err := http.Get("https://gae-runtimes-benchmark.appspot.com/names")
+	resp, err := http.Get("https://gae-benchmark.appspot.com/names")
 
 	if err != nil {
 		return nil, err
@@ -57,28 +57,27 @@ func getRequest(runtime string, testType string) (string, error) {
 	var requestStr string
 	if runtime == "spring" {
 		if testType == "key" {
-			requestStr = "https://java-spring-dot-gae-runtimes-benchmark.appspot.com/entity/%s"
+			requestStr = "https://java-spring-dot-gae-benchmark.appspot.com/entity/%s"
 		} else if testType == "query" {
-			requestStr = "https://java-spring-dot-gae-runtimes-benchmark.appspot.com/entities/%s"
+			requestStr = "https://java-spring-dot-gae-benchmark.appspot.com/entities/%s"
 		} else {
 			return "", errors.New(fmt.Sprintf("Test type %s does not exist for runtime %s", testType, runtime))
 		}
 
 	} else if runtime == "thundr" {
 		if testType == "key" {
-			requestStr = "https://java-thundr-dot-gae-runtimes-benchmark.appspot.com/entity/%s"
+			requestStr = "https://java-thundr-dot-gae-benchmark.appspot.com/entity/%s"
 		} else if testType == "query" {
-			requestStr = "https://java-thundr-dot-gae-runtimes-benchmark.appspot.com/entity/greaterThan/%s"
-			fmt.Printf("Processing qurery %s \n", requestStr)
+			requestStr = "https://java-thundr-dot-gae-benchmark.appspot.com/entity/greaterThan/%s"
 		} else {
 			return "", errors.New(fmt.Sprintf("Test type %s does not exist for runtime %s", testType, runtime))
 		}
 
 	} else if runtime == "node" {
 		if testType == "key" {
-			requestStr = "https://nodejs-dot-gae-runtimes-benchmark.appspot.com/api/graphql?query={getDummyById(id:\"%s\"){id,random1,random2}}"
+			requestStr = "https://nodejs-dot-gae-benchmark.appspot.com/api/graphql?query={getDummyById(id:\"%s\"){id,random1,random2}}"
 		} else if testType == "query" {
-			requestStr = "https://nodejs-dot-gae-runtimes-benchmark.appspot.com/api/graphql?query={dummies(index:%s){id,random1,random2}}"
+			requestStr = "https://nodejs-dot-gae-benchmark.appspot.com/api/graphql?query={dummies(index:%s){id,random1,random2}}"
 		} else {
 			return "", errors.New(fmt.Sprintf("Test type %s does not exist for runtime %s", testType, runtime))
 		}
@@ -86,6 +85,7 @@ func getRequest(runtime string, testType string) (string, error) {
 		return "", errors.New(fmt.Sprintf("Runtime %s not configured", runtime))
 	}
 
+	fmt.Printf("Processing qurery %s \n", requestStr)
 	return requestStr, nil
 }
 
@@ -158,7 +158,7 @@ func main() {
 	ch := make(chan string)
 	// Start goroutines fetching keys one by one in a loop 10 times.
 	for i := 0; i < routines; i++ {
-		go loopRequest(request, keys, i, 5, ch)
+		go loopRequest(request, keys, i, 10, ch)
 	}
 
 	for i := 0; i < routines; i++ {

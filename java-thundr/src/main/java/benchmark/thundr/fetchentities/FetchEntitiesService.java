@@ -26,7 +26,7 @@ public class FetchEntitiesService {
     public List<DummyEntity> queryGreaterThanIndex(Integer random2) {
         logger.info("Querying entities greater than " + random2);
         List<DummyEntity> entities = ofy().cache(false).load().type(DummyEntity.class)
-                .filter("random2 >=", random2).list();
+                .filter("random2 >=", random2).filter("random2 <", random2 + 10000).limit(10).list();
 
         return entities;
     }
