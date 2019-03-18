@@ -16,12 +16,28 @@ Metodology:
 - Instance type is F2 for each of them.
 - US/Central region
 
+Context:
+- Appengine is charging per instance time.
+
+
 Results:
 The results are as follows:
 
 Analysis:
 Low load 4 req/sec
 ====================
-- Instance are all the same
+- Number of Instances are all the same. Cost is the same for all.
 - Startup time is key. Nest - Spring are slow. Go is too fast.
-- In lower request per second, might be important considering the memory that is required to run the app, since it can trigger another instance.
+- In lower request per second, might be important considering the memory that is required to run the app, since it can trigger another instance when data consumes much memory.
+
+Medium load 40 req/sec
+====================
+- Here we starting noticing the difference in number of instances. Thundr and Go being the most efficient.
+- Biggest differences are in loading time and memory.
+
+
+
+TODO
+=======
+- Phyton
+- GO 1.11 (AppEngine second gen)
