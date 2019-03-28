@@ -1,5 +1,5 @@
 import { Resolver, Query, Mutation } from '@nestjs/graphql';
-import { Context, Roles, AllowAnonymous } from '@3wks/gae-node-nestjs';
+import { Context, Roles } from '@3wks/gae-node-nestjs';
 import { UserRepository, User } from './users.repository';
 import { UsersService } from './users.service';
 
@@ -11,7 +11,6 @@ export class UsersResolver {
   ) {}
 
   @Query('users')
-  @AllowAnonymous()
   async getUsers(
     _obj: {},
     _args: {},
