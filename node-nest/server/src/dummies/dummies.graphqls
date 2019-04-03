@@ -4,9 +4,14 @@ type DummyEntity {
   random2: Int
 }
 
+type Ring {
+  name: String!
+}
+
 type Query {
   dummies(index: Int): [DummyEntity!]!
   getDummyById(id: String!): DummyEntity
+  getSecret(bla: String): Ring
 }
 
 type Mutation {

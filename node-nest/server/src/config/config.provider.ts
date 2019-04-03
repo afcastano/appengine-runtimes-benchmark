@@ -4,6 +4,8 @@ import { ThrowReporter } from 'io-ts/lib/ThrowReporter';
 import * as _ from 'lodash';
 import * as Logger from 'bunyan';
 import { Configuration, createLogger } from '@3wks/gae-node-nestjs';
+import * as kms from '@google-cloud/kms';
+import { ninvoke } from 'q';
 
 const auth = t.partial({
   local: t.interface({
@@ -38,6 +40,9 @@ const Config = t.intersection([
     bucket: t.string,
     location: t.string,
     gmailUser: t.string,
+    kmsKeyRing: t.string,
+    apiKeyName: t.string,
+    apiKeyEnc: t.string,
     systemSecret: t.string,
     cookieSecret: t.string,
     auth,
@@ -60,9 +65,14 @@ interface SessionConfiguration {
   secret: string;
 }
 
+export type Ring = {
+  name: string
+}
+
 export class ConfigurationProvider implements Configuration {
   configuration: t.TypeOf<typeof Config>;
   logger: Logger;
+  apiKey: Promise<string>;
 
   constructor() {
     this.logger = createLogger('configuration-provider');
@@ -96,6 +106,18 @@ export class ConfigurationProvider implements Configuration {
     }
 
     this.configuration = decodedConfig.value;
+    this.apiKey = this.decrypt(this.configuration.apiKeyEnc);
+  }
+
+  private async decrypt(val: string): Promise<string> {
+    const client = new kms.KeyManagementServiceClient();
+    const name = client.cryptoKeyPath(
+      this.projectId,
+      'global',
+      this.configuration.kmsKeyRing,
+      this.configuration.apiKeyName
+    );
+    return client.decrypt({name, ciphertext: val}).then(res => res[0].plaintext.toString());
   }
 
   get projectId(): string {
@@ -109,7 +131,7 @@ export class ConfigurationProvider implements Configuration {
 
     return 'development';
   }
-
+  
   isDevelopment(): boolean {
     return this.environment === 'development';
   }

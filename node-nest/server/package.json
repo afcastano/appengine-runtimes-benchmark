@@ -23,13 +23,15 @@
     "dsui": "dsui --port 4000",
     "kill": "bash ./scripts/kill.sh",
     "kill-force": "bash ./scripts/kill.sh -9",
-    "clear-datastore": "rm -rf ~/.config/gcloud/emulators/datastore"
+    "clear-datastore": "rm -rf ~/.config/gcloud/emulators/datastore",
+    "encrypt": "read -sp \"Enter text to encrypt:\" secret && echo $secret | gcloud kms encrypt --keyring=test-andres --location=global --key=api-key --ciphertext-file=- --plaintext-file=- | base64"
   },
   "dependencies": {
     "@3wks/gae-node-nestjs": "3wks/gae-node-nestjs#6bfa6f32becd7551bf9decbe72caa4327795ffc0",
     "@google-cloud/connect-datastore": "2.0.1",
     "@google-cloud/datastore": "3.1.0",
     "@google-cloud/debug-agent": "3.0.1",
+    "@google-cloud/kms": "^0.4.0",
     "@google-cloud/logging-bunyan": "0.9.5",
     "@google-cloud/storage": "2.4.0",
     "@google-cloud/trace-agent": "3.5.2",
@@ -77,6 +79,7 @@
     "@types/express-session": "1.15.11",
     "@types/faker": "4.1.5",
     "@types/google-cloud__datastore": "^1.3.2",
+    "@types/google-cloud__kms": "^0.2.0",
     "@types/google-cloud__storage": "1.7.2",
     "@types/graphql": "14.0.5",
     "@types/html-pdf": "2.1.2",

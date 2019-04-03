@@ -4,6 +4,9 @@
   "host": "http://localhost:3000",
   "location": "austraia-southeast1",
   "gmailUser": "andres@go.com,au",
+  "kmsKeyRing": "test-andres",
+  "apiKeyName": "api-key",
+  "apiKeyEnc": "CiQAveVQ7xtcQOUHCQhD0L2vqEmNo3Root8rKUJ6Tm3hKNAUZUMSQQBmqZNs5LopTOOTN0TiDLBoyNG/ADtwLyEZfSU8hZ8VPJ3+w7E//vwY5IHUfpA++SEOnppGDkzuILV1ECdSAhfg",
   "bucket": "node-generated-dev.appspot.com",
   "auth": {
     "local": {
